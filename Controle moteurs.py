@@ -1,31 +1,41 @@
-import RPi.GPIO as gpio
-import time
-from getkey import getkey, keys
+import RPi.GPIO as GPIO
+from time import sleep
 
-gpio.setmode(gpio.BOARD)
+def MotorControl(Motor1A, Motor1B, Motor1E, Value) :
 
-#On demande les GPIO pins connecté
-out=int(input("1er moteur GPIO OUT ?"))
-out2=int(input("2nd moteur GPIO OUT ?"))
-
-#Configuration des GPIOs
-gpio.setup(out, gpio.OUT)
-gpio.setup(out2, gpio.OUT)
-
-
-
-#Boucle pour le controle des moteur
-While True :
+    GPIO.setmode(GPIO.BCM)
+    GPIO.setup(Motor1A,GPIO.OUT)
+    GPIO.setup(Motor1B,GPIO.OUT)
+    GPIO.setup(Motor1E,GPIO.OUT)
+    GPIO.setwarnings(False)
+    pwm = GPIO.PWM(Motor1E,90)   
+    pwm.start(10)
     
-#Initialisation des commandes
-    Avancer= (key==keys.UP)
-    Reculer= (key==keys.DOWN)
-    Droite= (key==keys.RIGHT)
-    Gauche= (key==keys.LEFT)
-    
-#Utiliser les moteur
-    gpio.OUT(out,Droite)
-    gpio.OUT(out2,Gauche)
+    if Value == "avant" :
+        
+        print ("marche avant")
+        GPIO.output(Motor1A,GPIO.HIGH)
+        GPIO.output(Motor1B,GPIO.LOW)
+        GPIO.output(Motor1E,GPIO.HIGH)
+        
+    elif Value == "arrière" :
+        
+        print ("marche arrière)")
+        GPIO.output(Moteur1A,GPIO.LOW)
+        GPIO.output(Moteur1B,GPIO.HIGH)
 
-#Nettoyer le courant
-    gpio.cleanup()
+    elif Value == "stop" :
+        
+        print ("arret")
+        GPIO.output(Motor1E,GPIO.LOW)
+        pwm.stop()    ## interruption du pwm
+        GPIO.cleanup()
+
+#Value = " "
+#Value = input("avant ? arrière ? stop ?")
+MotorControl(23, 24, 25, "stop")
+sleep(10)
+MotorControl(23, 24, 25, "avant")
+sleep(10)
+MotorControl(23, 24, 25, "stop")
+sleep(10)
