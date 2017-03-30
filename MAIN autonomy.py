@@ -88,20 +88,20 @@ def autonomy():
         droite = DistanceMesurement( 5, 6)
 		# Test conditionnels en fonction de la distance reçue par les capteurs
         			
-        if (avant > DistMinAvant) and (gauche > DistMinGauche) and (droite > DistMinDroite) :
+        elif (avant > DistMinAvant) and (gauche > DistMinGauche) and (droite > DistMinDroite) :
             MotorControl(23, 24, "avant")
 		    MotorControl(19, 26, "avant")
 			print ("marche avant")
 			
-        if (avant < DistMinAvant) and (gauche > droite) and (gauche > DistMinGauche) :
+        elif (avant < DistMinAvant) and (gauche > droite) and (gauche > DistMinGauche) :
             MotorControl(23, 24, "arrière")
 			print("virage à gauche")
             
-        if (avant < DistMinAvant) and (droite > gauche) and (droite > DistMinDroite) :
+        elif (avant < DistMinAvant) and (droite > gauche) and (droite > DistMinDroite) :
             MotorControl(19, 26, "arrière")
 			print("virage à droite")
             
-        if (avant < DistMinAvant) and (gauche < DistMinGauche) and (droite < DistMinDroite) :
+        elif (avant < DistMinAvant) and (gauche < DistMinGauche) and (droite < DistMinDroite) :
             MotorControl(23, 24, "stop")
             MotorControl(19, 26, "stop")
 			print ("arrêt des moteurs")
