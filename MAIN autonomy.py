@@ -88,7 +88,7 @@ def autonomy():
         droite = DistanceMesurement( 5, 6)
 		# Test conditionnels en fonction de la distance reçue par les capteurs
         			
-        elif (avant > DistMinAvant) and (gauche > DistMinGauche) and (droite > DistMinDroite) :
+        if (avant > DistMinAvant) and (gauche > DistMinGauche) and (droite > DistMinDroite) :
             MotorControl(23, 24, "avant")
 		    MotorControl(19, 26, "avant")
 			print ("marche avant")
