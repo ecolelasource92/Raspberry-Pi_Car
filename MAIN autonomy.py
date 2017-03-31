@@ -127,22 +127,3 @@ def main(gpioButton) :
                 GPIO.cleanup()
 # Execution du code 
 main(13)
-        
-        
-
-
-
-
-     
-
-   
-
-    
-
-    
-    
-
-
-
-
-
