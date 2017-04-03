@@ -1,15 +1,13 @@
 <!DOCTYPE html>
 <head>
     <meta charset="utf-8"/>
+     <link rel="stylesheet" type="text/css" href="stylesheet.css" />
     <title>RaspberryPI CAR</title>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script> <!-- télécharge jQuery depuis ce lien -->
 </head>
 <body>
 
-<?php
-
-?>
 
 <!-- transition distance / contrôles -->
 
@@ -23,18 +21,24 @@
     	fclose($fp); /* fermeture du fichier moteurs.txt */
 	/* Lecture des distances */
     	$fp = fopen("C:\\wamp64\\www\\RaspberryPI\\capteurs\\avant.txt","r");/* Ouverture de avant.txt en mode lecture */
-		$read = fgets($fp,10); /* variable $read récupère les caractères situés avant le positionnement 3 du curseur dans le fichier */
+		$read = fgets($fp,10); /* variable $read récupère les caractères situés avant le positionnement 10 du curseur dans le fichier */
+        echo "<div id='avant'>"; /* block html div permettant une mise en page en css car id ="avant" spécifique à la mesure avant */
     	echo $read ; /* affichage de la variable sur la page web */
+        echo "</div>"; /* fermeture block div */
     	fclose($fp); /* fermeture du fichier avant.txt */
     	echo "<br/>"; /* retour à la ligne HTML */
     	$fp = fopen("C:\\wamp64\\www\\RaspberryPI\\capteurs\\droite.txt","r");/* Ouverture de droite.txt en mode lecture */
-		$read = fgets($fp,10); /* variable $read récupère les caractères situés avant le positionnement 3 du curseur dans le fichier */
+		$read = fgets($fp,10); /* variable $read récupère les caractères situés avant le positionnement 10 du curseur dans le fichier */
+        echo "<div id='droite'>"; /* block html div permettant une mise en page en css car id ="droite" spécifique à la mesure droite */
     	echo $read ; /* affichage de la variable sur la page web */
+        echo "</div>"; /* fermeture block div */
     	fclose($fp); /* fermeture du fichier droite.txt */
     	echo "<br/>"; /* retour à la ligne HTML */
     	$fp = fopen("C:\\wamp64\\www\\RaspberryPI\\capteurs\\gauche.txt","r");/* Ouverture de gauche.txt en mode lecture */
-		$read = fgets($fp,10); /* variable $read récupère les caractères situés avant le positionnement 3 du curseur dans le fichier */
+		$read = fgets($fp,10); /* variable $read récupère les caractères situés avant le positionnement 10 du curseur dans le fichier */
+        echo "<div id='gauche'>"; /* block html div permettant une mise en page en css car id ="gauche" spécifique à la mesure gauche */
     	echo $read ; /* affichage de la variable sur la page web */
+        echo "</div>"; /* fermeture block div */
     	fclose($fp); /* fermeture du fichier gauche.txt */
     }
 	?>
@@ -47,19 +51,25 @@
    	 	fclose($fp); /* fermeture du fichier moteurs.txt */
 	/* Lecture des distances */
     	$fp = fopen("C:\\wamp64\\www\\RaspberryPI\\capteurs\\avant.txt","r");/* Ouverture de avant.txt en mode lecture */
-		$read = fgets($fp,10); /* variable $read récupère les caractères situés avant le positionnement 3 du curseur dans le fichier */
-    	echo $read ; /* affichage de la variable sur la page web */
-    	fclose($fp); /* fermeture du fichier avant.txt */
-    	echo "<br/>"; /* retour à la ligne HTML */
-    	$fp = fopen("C:\\wamp64\\www\\RaspberryPI\\capteurs\\droite.txt","r");/* Ouverture de droite.txt en mode lecture */
-		$read = fgets($fp,10); /* variable $read récupère les caractères situés avant le positionnement 3 du curseur dans le fichier */
-    	echo $read ; /* affichage de la variable sur la page web */
-    	fclose($fp); /* fermeture du fichier droite.txt */
-    	echo "<br/>"; /* retour à la ligne HTML */
-    	$fp = fopen("C:\\wamp64\\www\\RaspberryPI\\capteurs\\gauche.txt","r");/* Ouverture de gauche.txt en mode lecture */
-		$read = fgets($fp,10); /* variable $read récupère les caractères situés avant le positionnement 3 du curseur dans le fichier */
-    	echo $read ; /* affichage de la variable sur la page web */
-    	fclose($fp); /* fermeture du fichier gauche.txt */
+        $read = fgets($fp,10); /* variable $read récupère les caractères situés avant le positionnement 10 du curseur dans le fichier */
+        echo "<div id='avant'>"; /* block html div permettant une mise en page en css car id ="avant" spécifique à la mesure avant */
+        echo $read ; /* affichage de la variable sur la page web */
+        echo "</div>"; /* fermeture block div */
+        fclose($fp); /* fermeture du fichier avant.txt */
+        echo "<br/>"; /* retour à la ligne HTML */
+        $fp = fopen("C:\\wamp64\\www\\RaspberryPI\\capteurs\\droite.txt","r");/* Ouverture de droite.txt en mode lecture */
+        $read = fgets($fp,10); /* variable $read récupère les caractères situés avant le positionnement 10 du curseur dans le fichier */
+        echo "<div id='droite'>"; /* block html div permettant une mise en page en css car id ="droite" spécifique à la mesure droite */
+        echo $read ; /* affichage de la variable sur la page web */
+        echo "</div>"; /* fermeture block div */
+        fclose($fp); /* fermeture du fichier droite.txt */
+        echo "<br/>"; /* retour à la ligne HTML */
+        $fp = fopen("C:\\wamp64\\www\\RaspberryPI\\capteurs\\gauche.txt","r");/* Ouverture de gauche.txt en mode lecture */
+        $read = fgets($fp,10); /* variable $read récupère les caractères situés avant le positionnement 10 du curseur dans le fichier */
+        echo "<div id='gauche'>"; /* block html div permettant une mise en page en css car id ="gauche" spécifique à la mesure gauche */
+        echo $read ; /* affichage de la variable sur la page web */
+        echo "</div>"; /* fermeture block div */
+        fclose($fp); /* fermeture du fichier gauche.txt */
    	 }
 	?>
 	<!-- RECULER -->
@@ -71,19 +81,25 @@
    	 	fclose($fp); /* fermeture du fichier moteurs.txt */
 	/* Lecture des distances */
     	$fp = fopen("C:\\wamp64\\www\\RaspberryPI\\capteurs\\avant.txt","r");/* Ouverture de avant.txt en mode lecture */
-		$read = fgets($fp,10); /* variable $read récupère les caractères situés avant le positionnement 3 du curseur dans le fichier */
-    	echo $read ; /* affichage de la variable sur la page web */
-    	fclose($fp); /* fermeture du fichier avant.txt */
-    	echo "<br/>"; /* retour à la ligne HTML */
-    	$fp = fopen("C:\\wamp64\\www\\RaspberryPI\\capteurs\\droite.txt","r");/* Ouverture de droite.txt en mode lecture */
-		$read = fgets($fp,10); /* variable $read récupère les caractères situés avant le positionnement 3 du curseur dans le fichier */
-    	echo $read ; /* affichage de la variable sur la page web */
-    	fclose($fp); /* fermeture du fichier droite.txt */
-    	echo "<br/>"; /* retour à la ligne HTML */
-    	$fp = fopen("C:\\wamp64\\www\\RaspberryPI\\capteurs\\gauche.txt","r");/* Ouverture de gauche.txt en mode lecture */
-		$read = fgets($fp,10); /* variable $read récupère les caractères situés avant le positionnement 3 du curseur dans le fichier */
-    	echo $read ; /* affichage de la variable sur la page web */
-    	fclose($fp); /* fermeture du fichier gauche.txt */
+        $read = fgets($fp,10); /* variable $read récupère les caractères situés avant le positionnement 10 du curseur dans le fichier */
+        echo "<div id='avant'>"; /* block html div permettant une mise en page en css car id ="avant" spécifique à la mesure avant */
+        echo $read ; /* affichage de la variable sur la page web */
+        echo "</div>"; /* fermeture block div */
+        fclose($fp); /* fermeture du fichier avant.txt */
+        echo "<br/>"; /* retour à la ligne HTML */
+        $fp = fopen("C:\\wamp64\\www\\RaspberryPI\\capteurs\\droite.txt","r");/* Ouverture de droite.txt en mode lecture */
+        $read = fgets($fp,10); /* variable $read récupère les caractères situés avant le positionnement 10 du curseur dans le fichier */
+        echo "<div id='droite'>"; /* block html div permettant une mise en page en css car id ="droite" spécifique à la mesure droite */
+        echo $read ; /* affichage de la variable sur la page web */
+        echo "</div>"; /* fermeture block div */
+        fclose($fp); /* fermeture du fichier droite.txt */
+        echo "<br/>"; /* retour à la ligne HTML */
+        $fp = fopen("C:\\wamp64\\www\\RaspberryPI\\capteurs\\gauche.txt","r");/* Ouverture de gauche.txt en mode lecture */
+        $read = fgets($fp,10); /* variable $read récupère les caractères situés avant le positionnement 10 du curseur dans le fichier */
+        echo "<div id='gauche'>"; /* block html div permettant une mise en page en css car id ="gauche" spécifique à la mesure gauche */
+        echo $read ; /* affichage de la variable sur la page web */
+        echo "</div>"; /* fermeture block div */
+        fclose($fp); /* fermeture du fichier gauche.txt */
    	 }
 	?>
 	<!-- TOURNER A DROITE -->
@@ -95,19 +111,25 @@
    	 	fclose($fp); /* fermeture du fichier moteurs.txt */
 	/* Lecture des distances */
     	$fp = fopen("C:\\wamp64\\www\\RaspberryPI\\capteurs\\avant.txt","r");/* Ouverture de avant.txt en mode lecture */
-		$read = fgets($fp,10); /* variable $read récupère les caractères situés avant le positionnement 3 du curseur dans le fichier */
-    	echo $read ; /* affichage de la variable sur la page web */
-    	fclose($fp); /* fermeture du fichier avant.txt */
-    	echo "<br/>"; /* retour à la ligne HTML */
-    	$fp = fopen("C:\\wamp64\\www\\RaspberryPI\\capteurs\\droite.txt","r");/* Ouverture de droite.txt en mode lecture */
-		$read = fgets($fp,10); /* variable $read récupère les caractères situés avant le positionnement 3 du curseur dans le fichier */
-    	echo $read ; /* affichage de la variable sur la page web */
-    	fclose($fp); /* fermeture du fichier droite.txt */
-    	echo "<br/>"; /* retour à la ligne HTML */
-    	$fp = fopen("C:\\wamp64\\www\\RaspberryPI\\capteurs\\gauche.txt","r");/* Ouverture de gauche.txt en mode lecture */
-		$read = fgets($fp,10); /* variable $read récupère les caractères situés avant le positionnement 3 du curseur dans le fichier */
-    	echo $read ; /* affichage de la variable sur la page web */
-    	fclose($fp); /* fermeture du fichier gauche.txt */
+        $read = fgets($fp,10); /* variable $read récupère les caractères situés avant le positionnement 10 du curseur dans le fichier */
+        echo "<div id='avant'>"; /* block html div permettant une mise en page en css car id ="avant" spécifique à la mesure avant */
+        echo $read ; /* affichage de la variable sur la page web */
+        echo "</div>"; /* fermeture block div */
+        fclose($fp); /* fermeture du fichier avant.txt */
+        echo "<br/>"; /* retour à la ligne HTML */
+        $fp = fopen("C:\\wamp64\\www\\RaspberryPI\\capteurs\\droite.txt","r");/* Ouverture de droite.txt en mode lecture */
+        $read = fgets($fp,10); /* variable $read récupère les caractères situés avant le positionnement 10 du curseur dans le fichier */
+        echo "<div id='droite'>"; /* block html div permettant une mise en page en css car id ="droite" spécifique à la mesure droite */
+        echo $read ; /* affichage de la variable sur la page web */
+        echo "</div>"; /* fermeture block div */
+        fclose($fp); /* fermeture du fichier droite.txt */
+        echo "<br/>"; /* retour à la ligne HTML */
+        $fp = fopen("C:\\wamp64\\www\\RaspberryPI\\capteurs\\gauche.txt","r");/* Ouverture de gauche.txt en mode lecture */
+        $read = fgets($fp,10); /* variable $read récupère les caractères situés avant le positionnement 10 du curseur dans le fichier */
+        echo "<div id='gauche'>"; /* block html div permettant une mise en page en css car id ="gauche" spécifique à la mesure gauche */
+        echo $read ; /* affichage de la variable sur la page web */
+        echo "</div>"; /* fermeture block div */
+        fclose($fp); /* fermeture du fichier gauche.txt */
    	 }
 	?>
 	<!-- TOURNER A GAUCHE -->
@@ -119,19 +141,25 @@
    	 	fclose($fp); /* fermeture du fichier moteurs.txt */
 	/* Lecture des distances */
     	$fp = fopen("C:\\wamp64\\www\\RaspberryPI\\capteurs\\avant.txt","r");/* Ouverture de avant.txt en mode lecture */
-		$read = fgets($fp,10); /* variable $read récupère les caractères situés avant le positionnement 3 du curseur dans le fichier */
-    	echo $read ; /* affichage de la variable sur la page web */
-    	fclose($fp); /* fermeture du fichier avant.txt */
-    	echo "<br/>"; /* retour à la ligne HTML */
-    	$fp = fopen("C:\\wamp64\\www\\RaspberryPI\\capteurs\\droite.txt","r");/* Ouverture de droite.txt en mode lecture */
-		$read = fgets($fp,10); /* variable $read récupère les caractères situés avant le positionnement 3 du curseur dans le fichier */
-    	echo $read ; /* affichage de la variable sur la page web */
-    	fclose($fp); /* fermeture du fichier droite.txt */
-    	echo "<br/>"; /* retour à la ligne HTML */
-    	$fp = fopen("C:\\wamp64\\www\\RaspberryPI\\capteurs\\gauche.txt","r");/* Ouverture de gauche.txt en mode lecture */
-		$read = fgets($fp,10); /* variable $read récupère les caractères situés avant le positionnement 3 du curseur dans le fichier */
-    	echo $read ; /* affichage de la variable sur la page web */
-    	fclose($fp); /* fermeture du fichier gauche.txt */
+        $read = fgets($fp,10); /* variable $read récupère les caractères situés avant le positionnement 10 du curseur dans le fichier */
+        echo "<div id='avant'>"; /* block html div permettant une mise en page en css car id ="avant" spécifique à la mesure avant */
+        echo $read ; /* affichage de la variable sur la page web */
+        echo "</div>"; /* fermeture block div */
+        fclose($fp); /* fermeture du fichier avant.txt */
+        echo "<br/>"; /* retour à la ligne HTML */
+        $fp = fopen("C:\\wamp64\\www\\RaspberryPI\\capteurs\\droite.txt","r");/* Ouverture de droite.txt en mode lecture */
+        $read = fgets($fp,10); /* variable $read récupère les caractères situés avant le positionnement 10 du curseur dans le fichier */
+        echo "<div id='droite'>"; /* block html div permettant une mise en page en css car id ="droite" spécifique à la mesure droite */
+        echo $read ; /* affichage de la variable sur la page web */
+        echo "</div>"; /* fermeture block div */
+        fclose($fp); /* fermeture du fichier droite.txt */
+        echo "<br/>"; /* retour à la ligne HTML */
+        $fp = fopen("C:\\wamp64\\www\\RaspberryPI\\capteurs\\gauche.txt","r");/* Ouverture de gauche.txt en mode lecture */
+        $read = fgets($fp,10); /* variable $read récupère les caractères situés avant le positionnement 10 du curseur dans le fichier */
+        echo "<div id='gauche'>"; /* block html div permettant une mise en page en css car id ="gauche" spécifique à la mesure gauche */
+        echo $read ; /* affichage de la variable sur la page web */
+        echo "</div>"; /* fermeture block div */
+        fclose($fp); /* fermeture du fichier gauche.txt */
    	 }
 	?>
 
