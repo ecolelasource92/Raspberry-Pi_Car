@@ -130,13 +130,6 @@ html, body{ /* style appliqué aux balise html et body */
 	<script>
         jQuery(document).ready(function(){ // lorsque jQuery est chargé sur la page
 
-            setTimeout(function(){ // delai x sec moteurs
-                
-                $('#form').html('<input name="control" type="hidden" value="0"/>'); // insertion html dans le formulaire id="form" d'un champ de nom "control" hidden de valeur 0
-                $("#form").submit(); // post form
-                console.log("STOP"); // affiche dans la console STOP --> fonction setTimeout (delay) fonctionne
-            }, 35);
-
             // flèches directionnelles
 
             $(document).keypress(function(touche){ // lorsqu'une touche est enfoncé sur la page

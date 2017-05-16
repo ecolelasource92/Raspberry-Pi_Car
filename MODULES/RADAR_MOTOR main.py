@@ -6,9 +6,10 @@ from time import sleep
 GPIO.setmode(GPIO.BCM)
 GPIO.setwarnings(False)
 
-DistMinAvant = 30
-DistMinGauche = 15
-DistMinDroite = 15
+DistMinAvant = 60
+DistTropMinAvant = 30
+DistMinGauche = 20
+DistMinDroite = 20
 launch = 0
 
 
@@ -17,8 +18,8 @@ launch = 0
 def MotorControl(Motor1A, Motor1B, Value) :
     # Configuration des Ports
     GPIO.setmode(GPIO.BCM)
-    GPIO.setup(Motor1A,GPIO.OUT)
     GPIO.setup(Motor1B,GPIO.OUT)
+    GPIO.setup(Motor1A,GPIO.OUT)
             
     if Value == "avant" :
         # sortie du courant vers le moteur, pour une rotation dans le sens des aiguilles d'une montre        
@@ -40,7 +41,7 @@ def MotorControl(Motor1A, Motor1B, Value) :
 
 
 
-# Fonction de calcul de disatance pour un capteur   
+# Fonction de calcul de distance pour un capteur   
 def DistanceMesurement(TRIG, ECHO) :
     
     
@@ -78,6 +79,20 @@ def DistanceMesurement(TRIG, ECHO) :
     distance = round(distance, 2)
     return (distance)
 
+def led(pin) :
+    import RPi.GPIO as GPIO
+    import time
+    from time import sleep
+    GPIO.setmode (GPIO.BCM)
+    GPIO.setup(pin, GPIO.OUT)
+    try :
+        GPIO.output(pin, True)
+        sleep (1.5)
+        GPIO.output(pin, False)
+    except KeyboardInterrupt :
+        GPIO.cleanup()
+
+
 # Fonction pour le code autonome 
 def autonomy():
     GPIO.setmode(GPIO.BCM)
@@ -87,43 +102,85 @@ def autonomy():
         gauche = DistanceMesurement( 17, 22)
         droite = DistanceMesurement( 5, 6)
 		# Test conditionnels en fonction de la distance reçue par les capteurs
-        			
-        if (avant > DistMinAvant) and (gauche > DistMinGauche) and (droite > DistMinDroite) :
+        if (avant < DistTropMinAvant) :
+            MotorControl(23, 24, "arrière")
+            MotorControl(19, 26, "arrière")
+            print ("marche arrière")
+            sleep(1.5)
+            
+            
+        elif (avant > DistMinAvant) and (gauche > DistMinGauche) and (droite > DistMinDroite) :
+            
+            MotorControl(19, 26, "avant")
             MotorControl(23, 24, "avant")
-		    MotorControl(19, 26, "avant")
-			print ("marche avant")
+            
+            print ("marche avant")
 			
         elif (avant < DistMinAvant) and (gauche > droite) and (gauche > DistMinGauche) :
-            MotorControl(23, 24, "arrière")
-			print("virage à gauche")
+            GPIO.cleanup()
+            sleep (0.5)
+            MotorControl(23, 24, "stop")
+            MotorControl(19, 26, "avant")
+            sleep (0.3)
+            print("virage à gauche")
             
         elif (avant < DistMinAvant) and (droite > gauche) and (droite > DistMinDroite) :
-            MotorControl(19, 26, "arrière")
-			print("virage à droite")
+            GPIO.cleanup()
+            sleep (0.5)
+            MotorControl(19, 26, "stop")
+            MotorControl(23, 24, "avant")
+            sleep (0.3)
+            print("virage à droite")
             
+
+               
         elif (avant < DistMinAvant) and (gauche < DistMinGauche) and (droite < DistMinDroite) :
+            
             MotorControl(23, 24, "stop")
             MotorControl(19, 26, "stop")
-			print ("arrêt des moteurs")
-			print ("opération manuelle requise")
+            print ("arrêt des moteurs")
+            print ("opération manuelle requise")
 
 # fonction main() qui permet de faire le lien entre toutes les fonctions
-def main(gpioButton) :
-    import RPi.GPIO as GPIO
-    import time
-    GPIO.setmode(GPIO.BCM)
+#def main() :
+ #   import RPi.GPIO as GPIO
+ #   import time
+  #  GPIO.setmode(GPIO.BCM)
     
-    GPIO.setup(gpioButton, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+   # GPIO.setup(13, GPIO.IN, pull_up_down=GPIO.PUD_UP)
     
-    while True:
-        input_state = GPIO.input(gpioButton)
-        if input_state == False:
-            print ("button pressed")
-            time.sleep(0.2)
-            GPIO.cleanup()
-            try :
-                autonomy()
-            except KeyboardInterrupt:
-                GPIO.cleanup()
+    #while True:
+   #     input_state = GPIO.input(13)
+    #    if input_state == False:
+     #       print ("button pressed")
+      #      time.sleep(0.2)
+       #     GPIO.cleanup()
+        #    try :
+         #       autonomy()
+          #  except KeyboardInterrupt:
+                #GPIO.cleanup()
 # Execution du code 
-main(13)
+#main()
+try :
+    autonomy()
+except KeyboardInterrupt:
+    GPIO.cleanup()
+        
+        
+
+
+
+
+     
+
+   
+
+    
+
+    
+    
+
+
+
+
+
